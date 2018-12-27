@@ -1,0 +1,60 @@
+.news-post-detail {
+	clear: right;
+	font-size: 1rem;
+	
+	.post-date {
+		margin: 1em 0;
+		
+		.posted-on {
+			display: block;
+		}
+		.updated-on {
+			display: none;
+		}
+	}
+
+	h1 {
+		font-size: 1rem;
+		margin-bottom: .5rem;
+	}
+}
+
+.end-of-article-call {
+	background-color: $lighterblue;
+	font-family: $type-sans;
+	font-size: 1.2rem;
+	margin: 8rem 0 4rem;
+	opacity: 0;
+	padding: 0 2rem;
+	transform: rotate(10deg);
+	transition: all 500ms cubic-bezier(.3, .6, .6, 1);
+
+
+	h4, p {
+		margin-top: 0;
+	}
+	
+	.previous {
+		img.wp-post-image {
+			margin-right: .75em;
+			display: block;
+			float: left;
+		}
+		&:after {
+			content:'.';
+			display: block;
+			clear: left;
+			height: 0;
+			visibility: hidden;
+		}
+	}
+
+	&.shown {
+		margin-top: 2rem;
+		background-color: $lighterblue;
+		opacity: 1;
+		padding: 1.5rem 2rem;
+		transform: rotate(0);
+	}
+	
+}

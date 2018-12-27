@@ -1,0 +1,30 @@
+/* ==============================
+   MAIN
+   ============================== */
+
+$type-sans: 'Hind', Arial, sans-serif;
+$type-header: 'Lato', 'Hind', Arial, sans-serif;
+
+$lighterblue: #dfeef8;
+$lightblue: #c0ddf2;
+$keaneyblue: #2277b3;
+$midblue: #30557e;
+$blue: #002147;
+$darkblue: #001228;
+
+$lightgold: #fefada;
+$midgold: #ffd453;
+$gold: #c4960c;
+
+$white: #ffffff;
+$lightgrey: #fafafa;
+$grey: #dddddd;
+$midgrey: #999999;
+$darkgrey: #555555;
+$black: #000000;
+
+
+
+@import 'partials/archive';
+@import 'partials/services';
+@import 'partials/news';

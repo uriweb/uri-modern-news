@@ -1,0 +1,23 @@
+body.archive {
+
+	article.post {
+		background: none;
+		border-width: 0;
+		padding: 0;
+		
+		.featured-image {
+			float: left;
+			margin-left: 0;
+			margin-right: 2rem;
+			
+			img {
+				width: 150px;
+				height: auto;
+				float: left;
+				border-radius: .2rem;
+			}
+
+		}
+	}
+	
+}

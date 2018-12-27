@@ -1,0 +1,101 @@
+
+.categories-wrapper, .self-service-wrapper {
+ 	margin-bottom: 2rem;
+ 	padding: 2rem 0;
+	position: relative;
+	
+	header {
+		display: block;
+		margin: 0 auto;
+		max-width: 480px;
+		text-align: center;
+	}
+
+	& > div {
+		font-family: $type-sans;
+		padding: 0 1rem 1em;
+		text-align: center;
+		&:nth-child(odd) {
+			
+		}
+
+		.description p {
+			margin: 0 0 .5em;
+		}
+		ul {
+			font-family: $type-sans;
+			margin-top: 1em;
+			margin-left: 0;
+			padding-left: 0;
+		}
+		li {
+			list-style: none;
+			margin: 0;
+			a {
+				border-bottom: 1px solid $grey;
+				display: block;
+				margin: 0 1.5rem;
+				padding: 1rem;
+				&:hover {
+					background-color: $lightgrey;
+				}
+			}
+		}
+	}
+}
+
+.self-service-wrapper {
+	background-color: $lightgrey;
+}
+
+
+
+/** ICONS **/
+.self-service-wrapper {
+	h3 {
+		background-position: 50% 0;
+		background-repeat: no-repeat;
+		padding-top: 116px;
+	}
+	.resource-templates h3 {
+		background-image: url(img/services/templates.svg);
+	}
+	.resource-art h3 {
+		background-image: url(img/services/photos.svg);
+		background-size: 76px 95px;
+	}
+	.resource-guides h3 {
+		background-image: url(img/services/guides.svg);
+		background-size: 76px 95px;
+	}
+}
+.categories-wrapper {
+	h3 {
+		background-position: 50% 0;
+		background-repeat: no-repeat;
+		padding-top: 156px;
+	}
+	.advertising h3 {
+		background-image: url(img/services/advertising.svg);
+	}
+	.marketing h3 {
+		background-image: url(img/services/marketing.svg);
+	}
+	.news-and-public-relations h3 {
+		background-image: url(img/services/news.svg);
+	}
+	.photography-and-video h3 {
+		background-image: url(img/services/photography.svg);
+		background-size: 76px 95px;
+	}
+	.public-policy h3 {
+		background-image: url(img/services/policy.svg);
+	}
+	.social-media h3 {
+		background-image: url(img/services/social-media.svg);
+	}
+	.web-communications h3 {
+		background-image: url(img/services/web.svg);
+	}
+}
+/** END ICONS **/
