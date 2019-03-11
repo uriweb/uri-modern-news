@@ -1,22 +1,26 @@
 .news-post-detail {
-	clear: right;
+	margin-bottom: 2rem;
 	font-size: 1rem;
+	.contact {
+	}
+	.media-name, .media-phone {
+		margin-right: .5rem;
+	}
+	div {
+		display: inline;
+	}
 	
-	.post-date {
-		margin: 1em 0;
-		
-		.posted-on {
-			display: block;
-		}
-		.updated-on {
-			display: none;
+	.updated-on {
+		display: none;
+	}
+	
+	.posted-on {
+		font-size: 0;
+		time {
+			font-size: 1rem;
 		}
 	}
-
-	h1 {
-		font-size: 1rem;
-		margin-bottom: .5rem;
-	}
+	
 }
 
 .end-of-article-call {

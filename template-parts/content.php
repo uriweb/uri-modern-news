@@ -32,6 +32,23 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
 	<header class="entry-header">
+
+	<?php if ( is_single() && has_category( 'news', $post ) ) : ?>
+	<aside class="news-post-detail">
+		<?php if ( is_array( $media_contacts ) ) : ?>
+			<span class="contacts">Media Contact<?php print ( count( $media_contacts ) == 1 ) ? '' : 's'; ?>:</span>
+			<?php foreach ( $media_contacts as $c ) : ?>
+				<div class="contact">
+				<span class="media-name"><a href="mailto:<?php print $c['email']; ?>"><?php print $c['name']; ?></a></span>
+				<span class="media-phone"><?php print $c['telephone']; ?></span>
+				</div>
+			<?php endforeach; ?>
+		<?php endif; ?>
+		<?php uri_modern_news_posted_on(); ?>
+	</aside>
+	<?php endif; ?>
+
+
 	<div class="fullwidth">
 
 	<?php
@@ -64,19 +81,6 @@
 		get_template_part( 'template-parts/featured-image' );
 	}
 	?>
-
-	<?php if ( is_single() && has_category( 'news', $post ) ) : ?>
-	<aside class="cl-boxout right news-post-detail">
-		<?php if ( is_array( $media_contacts ) ) : ?>
-			<h1>Media Contact<?php print ( count( $media_contacts ) == 1 ) ? '' : 's'; ?>:</h1>
-			<?php foreach ( $media_contacts as $c ) : ?>
-				<span class="media-name"><a href="mailto:<?php print $c['email']; ?>"><?php print $c['name']; ?></a></span><br />
-				<?php print $c['telephone']; ?><br />
-			<?php endforeach; ?>
-		<?php endif; ?>
-		<?php uri_modern_news_posted_on(); ?>
-	</aside>
-	<?php endif; ?>
 
 	<div class="entry-content">
 		<?php
