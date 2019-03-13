@@ -23,6 +23,48 @@
 	
 }
 
+.cl-tiles .listing-item .wp-post-image {
+	display: block;
+	margin-bottom: 1rem;
+}
+
+.listing-item {
+	a.title {
+		@extend %titles-shared;
+	}
+	.date {
+		@extend %dates-shared;
+	}
+	
+	.excerpt {
+		color: #555;
+		display: block;
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+}
+
+.excerpt-dash {
+	display: none;
+}
+
+
+.category article .posted-on {
+	@extend %dates-shared;
+}
+.category article .updated-on {
+	display: none;
+}
+.category .entry-title {
+	@extend %titles-shared;
+}
+
+.lead-story a.title {
+	font-size: 1.7rem  !important;
+}
+
+
+
 .end-of-article-call {
 	background-color: $lighterblue;
 	font-family: $type-sans;

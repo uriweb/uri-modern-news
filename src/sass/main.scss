@@ -24,6 +24,33 @@ $darkgrey: #555555;
 $black: #000000;
 
 
+/* ==============================
+   INHERITANCES
+   ============================== */
+
+%dates-shared {
+	color: #555;
+	display: block;
+	font-family: "Hind", Arial, sans-serif;
+	font-size: .9rem !important;
+	margin-bottom: 1rem !important;
+}
+%titles-shared {
+	color: #000;
+	display: block;
+	font-family: "Lato", "Hind", Arial, sans-serif;
+	font-weight: 600;
+	font-size: 1.3rem;
+	line-height: 1.5;
+	margin-bottom: 1rem;
+
+	&:hover {
+		color: #005eff;
+	}
+}
+
+
+
 
 @import 'partials/archive';
 @import 'partials/services';
