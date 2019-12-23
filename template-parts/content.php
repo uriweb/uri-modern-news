@@ -45,6 +45,8 @@
 			<?php endforeach; ?>
 		<?php endif; ?>
 		<?php uri_modern_news_posted_on(); ?>
+		<?php echo do_shortcode( '[cl-share]' ); ?>
+		
 	</aside>
 	<?php endif; ?>
 

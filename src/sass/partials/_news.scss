@@ -1,5 +1,5 @@
 .news-post-detail {
-	margin-bottom: 2rem;
+	margin: 2rem 0;
 	font-size: 1rem;
 	.contact {
 	}
@@ -20,7 +20,25 @@
 			font-size: 1rem;
 		}
 	}
+
+	.cl-share-wrapper {
+		padding-top: .5em;
+		position: relative;
+		z-index: 999;
+		.cl-share-label {
+			background-color: transparent;
+			padding-left: 0;
+		}
+		a {
+			position: relative;
+			z-index: 999;
+		}
+	}
 	
+}
+
+.entry-title {
+	line-height: 1.5;
 }
 
 .cl-tiles .listing-item .wp-post-image {
@@ -72,7 +90,6 @@
 	margin: 8rem 0 4rem;
 	opacity: 0;
 	padding: 0 2rem;
-	transform: rotate(10deg);
 	transition: all 500ms cubic-bezier(.3, .6, .6, 1);
 
 

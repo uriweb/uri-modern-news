@@ -49,18 +49,6 @@ function uri_modern_news_get_field( $field_name, $post_id, $single = false ) {
  *
  * @see https://displayposts.com/docs/the-output-filter/
  */
-// function uri_modern_news_dps_output_customization( $output, $original_atts, $image, $title, $date, $excerpt, $inner_wrapper, $content, $class, $author, $category_display_text ) {
-//
-// $lead = uri_modern_news_get_field( 'lead', get_the_ID(), FALSE );
-//
-// if ( ! empty( $lead ) ) {
-// $excerpt = '<span class="excerpt">' . $lead . '</span>';
-// }
-//
-// $output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $image . $title . $date . $author . $category_display_text . $excerpt . $content . '</' . $inner_wrapper . '>';
-// return $output;
-// }
-// add_filter( 'display_posts_shortcode_output', 'uri_modern_news_dps_output_customization', 9, 11 );
 function uri_modern_news_get_excerpt( $excerpt, $post = null ) {
 
 	if ( $post ) {
