@@ -43,7 +43,7 @@ const sassOptions = {
 // JS concat, strip debugging and minify
 gulp.task( "scripts", scripts );
 
-function scripts( done ) {
+function scripts( ) {
 	gulp.src( "./src/js/*.js" )
 		.pipe( eslint() )
 		.pipe( eslint.format() )
@@ -62,7 +62,7 @@ function scripts( done ) {
 // Theme CSS concat, auto-prefix and minify
 gulp.task( "styles", styles );
 
-function styles( done ) {
+function styles( ) {
 	gulp.src( "./src/sass/*.scss" )
 		.pipe( sourcemaps.init() )
 		.pipe( sass( sassOptions ).on( "error", sass.logError ) )
@@ -79,7 +79,7 @@ function styles( done ) {
 // minify new images
 gulp.task( "images", images );
 
-function images( done ) {
+function images( ) {
 	const imgSrc = "./src/images/**/*",
 		imgDst = "./images";
 
@@ -94,7 +94,7 @@ function images( done ) {
 // run codesniffer
 gulp.task( "sniffs", sniffs );
 
-function sniffs( done ) {
+function sniffs( ) {
 	return gulp.src( ".", { read: false } )
 		.pipe( shell( [ "./.sniff" ] ) );
 }
@@ -102,7 +102,7 @@ function sniffs( done ) {
 // watch
 gulp.task( "watcher", watcher );
 
-function watcher( done ) {
+function watcher( ) {
 	// watch for JS changes
 	gulp.watch( "./src/js/*.js", scripts );
 
@@ -119,11 +119,11 @@ function watcher( done ) {
 }
 
 gulp.task( "default",
-	gulp.parallel( "images", "scripts", "styles", "sniffs", "watcher", function( done ) {
+	gulp.parallel( "images", "scripts", "styles", "sniffs", "watcher", function( ) {
 		done();
 	} )
 );
 
 function done() {
-	console.log( "done" );
+	//console.log( "done" );
 }
