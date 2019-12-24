@@ -1,5 +1,5 @@
-var gulp = require('gulp');
-var pkg = require('./package.json');
+var gulp = require( 'gulp' );
+var pkg = require( './package.json' );
 
 var banner = ['/*',
   'Theme Name: <%= pkg.themeName %>',
@@ -18,27 +18,27 @@ var banner = ['/*',
   '@author <%= pkg.authorHuman %>',
   '',
   '*/',
-  ''].join('\n');
+  ''].join( '\n' );
 
-// include plug-ins
-var jshint = require('gulp-jshint');
-var jscs = require('gulp-jscs');
-var changed = require('gulp-changed');
-var imagemin = require('gulp-imagemin');
-var concat = require('gulp-concat');
-var stripDebug = require('gulp-strip-debug');
-var terser = require('gulp-terser');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var autoprefixer = require('autoprefixer');
-var postcss = require('gulp-postcss');
-var rename = require('gulp-rename');
-var path = require('path');
-var header = require('gulp-header');
-var shell = require('gulp-shell');
+// Include plugins.
+
+var eslint = require( 'gulp-eslint' );
+var changed = require( 'gulp-changed' );
+var imagemin = require( 'gulp-imagemin' );
+var concat = require( 'gulp-concat' );
+var stripDebug = require( 'gulp-strip-debug' );
+var terser = require( 'gulp-terser' );
+var sass = require( 'gulp-sass' );
+var sourcemaps = require( 'gulp-sourcemaps' );
+var autoprefixer = require( 'autoprefixer' );
+var postcss = require( 'gulp-postcss' );
+var rename = require( 'gulp-rename' );
+var path = require( 'path' );
+var header = require( 'gulp-header' );
+var shell = require( 'gulp-shell' );
 
 
-// options
+// Options.
 var sassOptions = {
   errLogToConsole: true,
   outputStyle: 'compressed' //expanded, nested, compact, compressed
@@ -48,14 +48,10 @@ var sassOptions = {
 gulp.task('scripts', scripts);
 
 function scripts(done) {
-    
   gulp.src('./src/js/*.js')
-    .pipe(jshint(done))
-    .pipe(jshint.reporter('default'));
-    
-  gulp.src('./src/js/*.js')
-    .pipe(jscs(done))
-    .pipe(jscs.reporter());
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 
   gulp.src('./src/js/*.js')
     .pipe(concat('script.min.js'))
