@@ -27,7 +27,7 @@ var changed = require('gulp-changed');
 var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var stripDebug = require('gulp-strip-debug');
-var uglify = require('gulp-uglify');
+var terser = require('gulp-terser');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('autoprefixer');
@@ -60,7 +60,7 @@ function scripts(done) {
   gulp.src('./src/js/*.js')
     .pipe(concat('script.min.js'))
     //.pipe(stripDebug())
-    .pipe(uglify())
+    .pipe(terser())
     .pipe(header(banner, { pkg : pkg } ))
     .pipe(gulp.dest('./js/'));
     
@@ -84,43 +84,6 @@ function styles(done) {
 
   done();
   //console.log('styles ran');
-}
-
-// Features CSS
-gulp.task('featuresCSS', featuresCSS);
-
-function featuresCSS(done) {
-
-	gulp.src('./features/**/src/*.scss')
-		.pipe(sass(sassOptions).on('error', sass.logError))
-		.pipe(rename(function(file) {
-			file.dirname = path.dirname(file.dirname);
-			return file;
-		}))
-        .pipe(postcss([ autoprefixer() ]))
-		.pipe(header('/* built */'))
-		.pipe(gulp.dest('./features/'));
-	
-	done();
-	//console.log('features css ran');
-}
-
-// Features JS
-gulp.task('featuresJS', featuresJS);
-
-function featuresJS(done) {
-
-	gulp.src('./features/**/src/*.js')
-		.pipe(rename(function(file) {
-			file.dirname = path.dirname(file.dirname);
-			return file;
-		}))
-    	.pipe(uglify())
-		.pipe(header('/* built */'))
-    	.pipe(gulp.dest('./features/'));
-
-	done();
-	//console.log('features js ran');
 }
 
 // minify new images
@@ -158,12 +121,6 @@ function watcher(done) {
 	// watch for Theme CSS changes
 	gulp.watch('./src/sass/**/*', styles);
 	
-	// watch for Features CSS changes
-	gulp.watch('./features/**/*.scss', featuresCSS);
-	
-	// watch for Features JS changes
-	gulp.watch('./features/**/src/*.js', featuresJS);
-
 	// watch for image changes
 	gulp.watch('./src/images/**/*', images);
     
@@ -174,7 +131,7 @@ function watcher(done) {
 }
 
 gulp.task( 'default',
-	gulp.parallel('images', 'scripts', 'styles', 'featuresCSS', 'featuresJS', 'sniffs', 'watcher', function(done){
+	gulp.parallel('images', 'scripts', 'styles', 'sniffs', 'watcher', function(done){
 		done();
 	})
 );
