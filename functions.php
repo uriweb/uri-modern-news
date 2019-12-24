@@ -18,7 +18,7 @@ function uri_modern_news_enqueues() {
 
 	wp_enqueue_style( 'uri-modern-news-style', get_stylesheet_directory_uri() . '/style.css', array( $parent_style ), wp_get_theme()->get( 'Version' ) );
 
-	wp_enqueue_script( 'uri-next', get_stylesheet_directory_uri() . '/js/uri-next.js', array(), wp_get_theme()->get( 'Version' ), true );
+	wp_enqueue_script( 'uri-modern-news-js', get_stylesheet_directory_uri() . '/js/script.min.js', array(), wp_get_theme()->get( 'Version' ), true );
 
 }
 add_action( 'wp_enqueue_scripts', 'uri_modern_news_enqueues' );
