@@ -137,7 +137,7 @@ acf_add_local_field_group(
 		'active' => 1,
 		'description' => '',
 	)
-	);
+);
 
 
 acf_add_local_field_group(
@@ -244,7 +244,7 @@ acf_add_local_field_group(
 		'active' => 1,
 		'description' => '',
 	)
-	);
+);
 
 acf_add_local_field_group(
 	array(
@@ -299,6 +299,56 @@ acf_add_local_field_group(
 		'active' => 1,
 		'description' => '',
 	)
-	);
+);
+
+acf_add_local_field_group(array(
+	'key' => 'group_5e2eef5bd6d48',
+	'title' => 'Sticky Order',
+	'fields' => array(
+		array(
+			'key' => 'field_5e2eefa926a8e',
+			'label' => 'Order',
+			'name' => 'sticky_order',
+			'type' => 'range',
+			'instructions' => 'Specify the order of the top 4 news stories.	(lower numbers appear first)',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => 30,
+			'min' => '',
+			'max' => '',
+			'step' => '',
+			'prepend' => '',
+			'append' => '',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'post',
+			),
+			array(
+				'param' => 'post_category',
+				'operator' => '==',
+				'value' => 'category:news',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'side',
+	'style' => 'seamless',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => 'Sticky Post Order',
+));
+
 
 endif;
