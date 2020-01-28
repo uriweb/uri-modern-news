@@ -102,4 +102,10 @@ require get_stylesheet_directory() . '/inc/custom-fields.php';
  */
 require get_stylesheet_directory() . '/inc/template-tags.php';
 
+/**
+ * Style the Simple Lighbox plugin
+ */
+require get_stylesheet_directory() . '/inc/simple-lightbox-theme.php';
+
+
 
