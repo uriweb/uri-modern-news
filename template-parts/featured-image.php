@@ -4,7 +4,7 @@
  *
  * @package uri-modern
  */
- 
+
 	ob_start();
 
 	$link_to_fullsize = false; // initialize as false, set to true later if single.
@@ -51,8 +51,8 @@ if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned
 }
 
 $content = ob_get_contents();
-if ( function_exists('slb_activate') ) {
-	$content = slb_activate($content);
+if ( function_exists( 'slb_activate' ) ) {
+	$content = slb_activate( $content );
 }
 ob_end_clean();
 echo $content;
