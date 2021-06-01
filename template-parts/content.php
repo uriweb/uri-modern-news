@@ -19,6 +19,30 @@
 	}
 
 	$media_contacts = uri_modern_news_get_media_contacts( $post );
+	
+//  	echo '<pre>', print_r( $media_contacts, TRUE), '</pre>';
+// 	
+// 	$name = 'Todd McLeish';
+// 	
+// 	function get_media_contact_id_by_name( $name ) {
+// 		$last = array_pop( explode( ' ', $name ) );
+// 
+// 		$args = array( 
+// 			'meta_key' => 'lastname', 
+// 			'meta_value' => $last,
+// 		);
+// 		$mc_post = get_posts( $args );
+// 		$media_contact_id = $mc_post[0]->ID;
+// 		
+// 		if( empty( $media_contact_id ) ) {
+// 			$media_contact_id = 51;
+// 		}
+// 		return $media_contact_id;
+// 		//echo '<pre>', print_r( $media_contact_id, TRUE), '</pre>';
+// 	}
+// 	echo '<pre>', print_r( get_media_contact_id_by_name( 'Todd McLeish' ), TRUE), '</pre>';
+
+
 
 	// get the deck; empty it if it's just a copy of the title.
 	$deck = uri_modern_news_get_field( 'deck', $post->ID );
@@ -33,7 +57,7 @@
 	
 	<header class="entry-header">
 
-	<?php if ( is_single() && has_category( 'news', $post ) ) : ?>
+	<?php if ( is_single() && ( has_category( 'archives', $post ) || has_category( 'advisories', $post )) ) : ?>
 	<aside class="news-post-detail">
 		<?php if ( is_array( $media_contacts ) ) : ?>
 			<span class="contacts">Media Contact<?php print ( count( $media_contacts ) == 1 ) ? '' : 's'; ?>:</span>
