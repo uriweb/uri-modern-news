@@ -57,7 +57,7 @@
 	
 	<header class="entry-header">
 
-	<?php if ( is_single() && ( has_category( 'archives', $post ) || has_category( 'advisories', $post )) ) : ?>
+	<?php if ( is_single() && count( $media_contacts ) > 0 ) : ?>
 	<aside class="news-post-detail">
 		<?php if ( is_array( $media_contacts ) ) : ?>
 			<span class="contacts">Media Contact<?php print ( count( $media_contacts ) == 1 ) ? '' : 's'; ?>:</span>
@@ -79,14 +79,10 @@
 
 	<?php
 
-	if ( ! is_single() ) { // it's an archive view, show the image first
-		get_template_part( 'template-parts/featured-image' );
-	}
-
-
-	if ( is_single() && ! uri_modern_get_field( 'pagetitle' ) ) {
-
-		the_title( '<h1 class="entry-title fullwidth">', '</h1>' );
+	if ( is_single() ) {
+		if ( ! uri_modern_get_field( 'pagetitle' ) ) {
+			the_title( '<h1 class="entry-title fullwidth">', '</h1>' );
+		}
 
 		if ( ! empty( $deck ) ) {
 			print '<p class="type-intro deck">' . $deck . '</p>';
