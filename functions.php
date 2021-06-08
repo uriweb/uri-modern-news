@@ -7,6 +7,21 @@
  * @package uri-modern-news
  */
 
+
+/**
+ * Returns only press releases in search results
+ * i.e. no people, no advisories, no pages.
+ */
+function uri_modern_news_limit_search( $query ) {
+	if ( $query->is_search && !is_admin() ) {
+		$query->set( 'post_type', array( 'post','page' ) );
+		$query->set( 'cat', array( 2, 2320 ) );
+	}
+	return $query;
+}
+add_filter( 'pre_get_posts', 'uri_modern_news_limit_search' );
+
+
 /**
  * Enqueue scripts and styles.
  */
