@@ -39,9 +39,6 @@ function uri_modern_news_enqueues() {
 add_action( 'wp_enqueue_scripts', 'uri_modern_news_enqueues' );
 
 
-
-
-
 /**
  * Fail less wihtout the ACF plugin
  *
@@ -61,6 +58,35 @@ function uri_modern_news_get_field( $field_name, $post_id, $single = false ) {
 
 /**
  * Display Posts Output Filter
+ * @see https://displayposts.com/docs/the-output-filter/
+ *
+ */
+function uri_modern_news_output_filter( $output, $original_atts, $image, $title, $date, $excerpt, $inner_wrapper, $content, $class, $author, $category_display_text ) {
+
+	// The default output
+	$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $image . $title . $date . $author . $category_display_text . $excerpt . $content . '</' . $inner_wrapper . '>';
+
+	if ( $post ) {
+		$id = $post->ID;
+	} else {
+		$id = get_the_ID();
+	}
+
+	$categories = wp_get_post_categories( $id, array( "fields" => "names" ) );
+
+	// Only show a few things for Media Mention posts
+	if ( in_array( 'Media Mention', $categories ) ) {
+		$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $date . $excerpt . $title . '</' . $inner_wrapper . '>';
+	}
+
+	return $output;
+
+}
+add_filter( 'display_posts_shortcode_output', 'uri_modern_news_output_filter', 10, 11 );
+
+
+/**
+ * Display Posts Excerpt Filter
  *
  * @see https://displayposts.com/docs/the-output-filter/
  */
@@ -72,8 +98,14 @@ function uri_modern_news_get_excerpt( $excerpt, $post = null ) {
 		$id = get_the_ID();
 	}
 
-	$lead = uri_modern_news_get_field( 'lead', $id, false );
+	// Inject the media outlet, if there is one
+	$outlet = uri_modern_news_get_field( 'media_outlet', $id, false );
+	if ( ! empty( $outlet ) ) {
+		$excerpt = '<span class="outlet">' . $outlet . '</span>';
+	}
 
+	// Inject the lead, if there is one
+	$lead = uri_modern_news_get_field( 'lead', $id, false );
 	if ( ! empty( $lead ) ) {
 		$excerpt = '<span class="excerpt">' . $lead . '</span>';
 	}
