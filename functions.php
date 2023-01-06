@@ -82,7 +82,14 @@ function uri_modern_news_output_filter( $output, $original_atts, $image, $title,
 			$date = '<span class="date">' . date_format( $pubdate, 'F j, Y' ) . '</span>';
 		}
 
-		$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $date . $excerpt . $title . '</' . $inner_wrapper . '>';
+		// Use the media outlet, if there is one
+		$outlet_markup = '';
+		$outlet = uri_modern_news_get_field( 'media_outlet', $id, false );
+		if ( ! empty( $outlet ) ) {
+			$outlet_markup = '<span class="outlet">' . $outlet . '</span>';
+		}
+
+		$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $date . $outlet_markup . $title . $excerpt . '</' . $inner_wrapper . '>';
 	}
 
 	return $output;
@@ -102,13 +109,7 @@ function uri_modern_news_get_excerpt( $excerpt, $post = null ) {
 		$id = get_the_ID();
 	}
 
-	// Inject the media outlet, if there is one
-	$outlet = uri_modern_news_get_field( 'media_outlet', $id, false );
-	if ( ! empty( $outlet ) ) {
-		$excerpt = '<span class="outlet">' . $outlet . '</span>';
-	}
-
-	// Inject the lead, if there is one
+	// Use the lead instead, if there is one
 	$lead = uri_modern_news_get_field( 'lead', $id, false );
 	if ( ! empty( $lead ) ) {
 		$excerpt = '<span class="excerpt">' . $lead . '</span>';
