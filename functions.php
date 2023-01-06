@@ -72,10 +72,8 @@ function uri_modern_news_output_filter( $output, $original_atts, $image, $title,
 		$id = get_the_ID();
 	}
 
-	$categories = wp_get_post_categories( $id, array( 'fields' => 'slugs' ) );
-
 	// Only show a few things for Media Mention posts
-	if ( in_array( 'media-mention', $categories ) ) {
+	if ( has_category( 'media-mention' ) ) {
 
 		// If we have a publication date, use that instead of the post date
 		$pubdate = uri_modern_news_get_field( 'publication_date', $id, false );
