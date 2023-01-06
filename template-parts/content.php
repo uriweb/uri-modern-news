@@ -54,9 +54,9 @@
 	
 	<header class="entry-header">
 
-	<?php if ( is_single() && count( $media_contacts ) > 0 ) : ?>
+	<?php if ( is_single() &&  is_array( $media_contacts ) ) : ?>
 	<aside class="news-post-detail">
-		<?php if ( is_array( $media_contacts ) ) : ?>
+		<?php if ( count( $media_contacts ) > 0 ) : ?>
 			<span class="contacts">Media Contact<?php print ( count( $media_contacts ) == 1 ) ? '' : 's'; ?>:</span>
 			<?php foreach ( $media_contacts as $c ) : ?>
 				<div class="contact">
