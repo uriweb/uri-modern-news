@@ -1,0 +1,26 @@
+.media-mentions {
+
+    & > div {
+        background: #fff;
+        border-radius: .2rem;
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        border: 1px solid #f1f1f1;
+    }
+
+    .date {
+        margin-bottom: .2rem !important;
+    }
+    
+    .excerpt {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: .5rem;
+    }
+    
+    .title {
+        border-top: 1px solid #eee;
+        padding-top: .8rem;
+    }
+
+}
