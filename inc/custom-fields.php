@@ -1,6 +1,6 @@
 <?php
 /**
- * Features custom post type and fields
+ * Custom post type and fields
  *
  * @package uri-modern-news
  */
@@ -351,6 +351,69 @@ acf_add_local_field_group(
 		'description' => 'Sticky Post Order',
 	)
 	);
+
+	// Media Mentions
+	acf_add_local_field_group(
+		array(
+			'key' => 'group_63b6f040cd6a0',
+			'title' => 'Media Mention',
+			'fields' => array(
+				array(
+					'key' => 'field_63b6f2bc8e712',
+					'label' => 'Media Outlet',
+					'name' => 'media_outlet',
+					'type' => 'text',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+				),
+				array(
+					'key' => 'field_63b6f2f38e713',
+					'label' => 'Publication Date',
+					'name' => 'publication_date',
+					'type' => 'date_picker',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'display_format' => 'F j, Y',
+					'return_format' => 'F j, Y',
+					'first_day' => 0,
+				),
+			),
+			'location' => array(
+				array(
+					array(
+						'param' => 'post_category',
+						'operator' => '==',
+						'value' => 'category:media-mention',
+					),
+				),
+			),
+			'menu_order' => 0,
+			'position' => 'acf_after_title',
+			'style' => 'default',
+			'label_placement' => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen' => '',
+			'active' => true,
+			'description' => '',
+		)
+		);
 
 
 endif;
