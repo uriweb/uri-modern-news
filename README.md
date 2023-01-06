@@ -2,7 +2,6 @@
 
 URI Modern News is a WordPress theme designed for the University of Rhode Island news site. It is a child theme of URI Modern.
 
-
 ## How do I get set up?
 
 1. Make sure you have [URI Modern](https://github.com/uriweb/uri-modern) installed first

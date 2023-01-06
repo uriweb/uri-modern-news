@@ -58,8 +58,8 @@ function uri_modern_news_get_field( $field_name, $post_id, $single = false ) {
 
 /**
  * Display Posts Output Filter
- * @see https://displayposts.com/docs/the-output-filter/
  *
+ * @see https://displayposts.com/docs/the-output-filter/
  */
 function uri_modern_news_output_filter( $output, $original_atts, $image, $title, $date, $excerpt, $inner_wrapper, $content, $class, $author, $category_display_text ) {
 
@@ -72,7 +72,7 @@ function uri_modern_news_output_filter( $output, $original_atts, $image, $title,
 		$id = get_the_ID();
 	}
 
-	$categories = wp_get_post_categories( $id, array( "fields" => "names" ) );
+	$categories = wp_get_post_categories( $id, array( 'fields' => 'names' ) );
 
 	// Only show a few things for Media Mention posts
 	if ( in_array( 'Media Mention', $categories ) ) {

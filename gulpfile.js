@@ -24,10 +24,9 @@ const banner = [ "/*",
 
 const eslint = require( "gulp-eslint" );
 const changed = require( "gulp-changed" );
-const imagemin = require( "gulp-imagemin" );
 const concat = require( "gulp-concat" );
 const terser = require( "gulp-terser" );
-const sass = require( "gulp-sass" );
+const sass = require( "gulp-sass" )(require("sass"));
 const sourcemaps = require( "gulp-sourcemaps" );
 const autoprefixer = require( "autoprefixer" );
 const postcss = require( "gulp-postcss" );
@@ -45,9 +44,8 @@ gulp.task( "scripts", scripts );
 
 function scripts(done) {
 	gulp.src( "./src/js/*.js" )
-		.pipe( eslint() )
+		.pipe( eslint(done) )
 		.pipe( eslint.format() )
-		.pipe( eslint.failAfterError() );
 
 	gulp.src( "./src/js/*.js" )
 		.pipe( concat( "script.min.js" ) )
@@ -76,21 +74,6 @@ function styles(done) {
 	//console.log('styles ran');
 }
 
-// minify new images
-gulp.task( "images", images );
-
-function images(done) {
-	const imgSrc = "./src/images/**/*",
-		imgDst = "./images";
-
-	gulp.src( imgSrc )
-		.pipe( changed( imgDst ) )
-		.pipe( imagemin() )
-		.pipe( gulp.dest( imgDst ) );
-	done();
-	//console.log('images ran');
-}
-
 // run codesniffer
 gulp.task( "sniffs", sniffs );
 
@@ -109,9 +92,6 @@ function watcher(done) {
 	// watch for Theme CSS changes
 	gulp.watch( "./src/sass/**/*", styles );
 
-	// watch for image changes
-	gulp.watch( "./src/images/**/*", images );
-
 	// watch for PHP change
 	gulp.watch( "./**/*.php", sniffs );
 
@@ -119,7 +99,7 @@ function watcher(done) {
 }
 
 gulp.task( "default",
-	gulp.parallel( "images", "scripts", "styles", "sniffs", "watcher", function(done) {
+	gulp.parallel( "scripts", "styles", "sniffs", "watcher", function(done) {
 		done();
 	} )
 );
