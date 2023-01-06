@@ -72,10 +72,18 @@ function uri_modern_news_output_filter( $output, $original_atts, $image, $title,
 		$id = get_the_ID();
 	}
 
-	$categories = wp_get_post_categories( $id, array( 'fields' => 'names' ) );
+	$categories = wp_get_post_categories( $id, array( 'fields' => 'slugs' ) );
 
 	// Only show a few things for Media Mention posts
-	if ( in_array( 'Media Mention', $categories ) ) {
+	if ( in_array( 'media-mention', $categories ) ) {
+
+		// If we have a publication date, use that instead of the post date
+		$pubdate = uri_modern_news_get_field( 'publication_date', $id, false );
+		if ( ! empty( $pubdate ) ) {
+			$pubdate = date_create( $pubdate );
+			$date = '<span class="date">' . date_format( $pubdate, 'F j, Y' ) . '</span>';
+		}
+
 		$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $date . $excerpt . $title . '</' . $inner_wrapper . '>';
 	}
 
@@ -86,9 +94,7 @@ add_filter( 'display_posts_shortcode_output', 'uri_modern_news_output_filter', 1
 
 
 /**
- * Display Posts Excerpt Filter
- *
- * @see https://displayposts.com/docs/the-output-filter/
+ * Excerpt Filter
  */
 function uri_modern_news_get_excerpt( $excerpt, $post = null ) {
 
