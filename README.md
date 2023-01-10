@@ -13,4 +13,5 @@ URI Modern News is a WordPress theme designed for the University of Rhode Island
 Contributors: Brandon Fuller, John Pennypacker  
 Tags: themes  
 Requires at least: 4.0  
-Tested up to: 4.9  
+Tested up to: 6.1  
+Stable tag: 1.1  
