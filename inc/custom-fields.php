@@ -1,6 +1,6 @@
 <?php
 /**
- * Features custom post type and fields
+ * Custom post type and fields
  *
  * @package uri-modern-news
  */
@@ -137,273 +137,8 @@ acf_add_local_field_group(
 		'active' => 1,
 		'description' => '',
 	)
-	);
+);
 
-acf_add_local_field_group(
-	array(
-		'key' => 'group_5c23a496dfd24',
-		'title' => 'Experts',
-		'fields' => array(
-			array(
-				'key' => 'field_5716706d612bd',
-				'label' => 'Sort Name',
-				'name' => 'sort_name',
-				'type' => 'text',
-				'instructions' => 'The name that should be used when sorting experts alphabetically.	Usually, the surname of the expert.',
-				'required' => 1,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => 60,
-			),
-			array(
-				'key' => 'field_5716709d612be',
-				'label' => 'Position',
-				'name' => 'position',
-				'type' => 'text',
-				'instructions' => 'An expert\'s job title or position at the university.',
-				'required' => 1,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => 255,
-			),
-			array(
-				'key' => 'field_5716717eb871f',
-				'label' => 'Telephone',
-				'name' => 'telephone',
-				'type' => 'text',
-				'instructions' => 'Enter a single phone number.	Use periods as separators.	e.g. 401.874.1000',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => 20,
-			),
-			array(
-				'key' => 'field_57167160b871e',
-				'label' => 'Email',
-				'name' => 'email',
-				'type' => 'text',
-				'instructions' => 'The email address for this expert.',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => 60,
-			),
-			array(
-				'key' => 'field_571670ddd116b',
-				'label' => 'Links',
-				'name' => 'links',
-				'type' => 'textarea',
-				'instructions' => 'Use HTML to markup links for this expert.	e.g. &lt;a href="URL"&gt;LINK TEXT&lt;/a&gt;',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '<a href="URL">LINK TEXT</a>',
-				'maxlength' => '',
-				'rows' => '',
-				'new_lines' => 'br',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'post_category',
-					'operator' => '==',
-					'value' => '7',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'seamless',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => array(),
-		'active' => 1,
-		'description' => '',
-	)
-	);
-
-acf_add_local_field_group(
-	array(
-		'key' => 'group_5c23a496e7db4',
-		'title' => 'For Journalists',
-		'fields' => array(
-			array(
-				'key' => 'field_5734a24510e13',
-				'label' => 'Show the Media Box',
-				'name' => 'show_the_media_box',
-				'type' => 'checkbox',
-				'instructions' => 'Select this option to show the Media (For Journalists) box on the news story page.',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'choices' => array(
-					'Show' => 'Show the Media Box',
-				),
-				'default_value' => array(),
-				'layout' => 'vertical',
-				'allow_custom' => 0,
-				'save_custom' => 0,
-				'toggle' => 0,
-				'return_format' => 'value',
-			),
-			array(
-				'key' => 'field_5744d87793168',
-				'label' => 'Attachment',
-				'name' => 'attachment',
-				'type' => 'file',
-				'instructions' => 'Attach a file for journalists here.',
-				'required' => 0,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field' => 'field_5734a24510e13',
-							'operator' => '==',
-							'value' => 'Show',
-						),
-					),
-				),
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'library' => 'uploadedTo',
-				'return_format' => 'array',
-				'min_size' => 0,
-				'max_size' => 0,
-				'mime_types' => '',
-			),
-			array(
-				'key' => 'field_5744d9d1879df',
-				'label' => 'More Text',
-				'name' => 'more_text',
-				'type' => 'wysiwyg',
-				'instructions' => 'Add custom links to the "More" box at the bottom of the story.',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '<br />
-<a href="https://securelb.imodules.com/s/1638/03-Foundation/interior-hybrid.aspx?sid=1638&gid=3&pgid=770&cid=2270&utm_source=news&utm_medium=more&utm_campaign=giving">Support the University of Rhode Island</a>.',
-				'toolbar' => 'basic',
-				'media_upload' => 0,
-				'tabs' => 'all',
-				'delay' => 0,
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'post_category',
-					'operator' => '==',
-					'value' => '2',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => array(),
-		'active' => 1,
-		'description' => '',
-	)
-	);
-
-acf_add_local_field_group(
-	array(
-		'key' => 'group_5c23a496ed67d',
-		'title' => 'Media',
-		'fields' => array(
-			array(
-				'key' => 'field_5734a0330be6f',
-				'label' => 'Embed Code',
-				'name' => 'embed_code',
-				'type' => 'textarea',
-				'instructions' => '',
-				'required' => 1,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'maxlength' => '',
-				'rows' => 3,
-				'new_lines' => '',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'post_format',
-					'operator' => '==',
-					'value' => 'video',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'acf_after_title',
-		'style' => 'seamless',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => array(),
-		'active' => 1,
-		'description' => '',
-	)
-	);
 
 acf_add_local_field_group(
 	array(
@@ -509,34 +244,13 @@ acf_add_local_field_group(
 		'active' => 1,
 		'description' => '',
 	)
-	);
+);
 
 acf_add_local_field_group(
 	array(
 		'key' => 'group_5c23a49702a08',
 		'title' => 'Press Release Fields',
 		'fields' => array(
-			array(
-				'key' => 'field_56fa7fca33192',
-				'label' => 'Legacy Serial Number',
-				'name' => 'legacy_serial_number',
-				'type' => 'number',
-				'instructions' => 'Ignore this field.	It\'s a temporary bridge between the new site and the old, and it\'s irrelevant to humans.',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'min' => 0,
-				'max' => 999999,
-				'step' => '',
-			),
 			array(
 				'key' => 'field_56fa801133193',
 				'label' => 'Media Contact',
@@ -585,19 +299,19 @@ acf_add_local_field_group(
 		'active' => 1,
 		'description' => '',
 	)
-	);
+);
 
 acf_add_local_field_group(
 	array(
-		'key' => 'group_5c23a49706ec8',
-		'title' => 'RAMFAM',
+		'key' => 'group_5e2eef5bd6d48',
+		'title' => 'Sticky Order',
 		'fields' => array(
 			array(
-				'key' => 'field_5716caf2f5eec',
-				'label' => 'URL',
-				'name' => 'url',
-				'type' => 'text',
-				'instructions' => 'The URL that the image will link to.',
+				'key' => 'field_5e2eefa926a8e',
+				'label' => 'Order',
+				'name' => 'sticky_order',
+				'type' => 'range',
+				'instructions' => 'Specify the order of the top 4 news stories.	(lower numbers appear first)',
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
@@ -605,116 +319,101 @@ acf_add_local_field_group(
 					'class' => '',
 					'id' => '',
 				),
-				'default_value' => '',
-				'placeholder' => 'http://www.gorhody.com',
+				'default_value' => 30,
+				'min' => '',
+				'max' => '',
+				'step' => '',
 				'prepend' => '',
 				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
 			),
 		),
 		'location' => array(
 			array(
 				array(
-					'param' => 'post_category',
+					'param' => 'post_type',
 					'operator' => '==',
-					'value' => '356',
+					'value' => 'post',
 				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'seamless',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => array(),
-		'active' => 1,
-		'description' => '',
-	)
-	);
-
-acf_add_local_field_group(
-	array(
-		'key' => 'group_5c23a497098a0',
-		'title' => 'URI in the News',
-		'fields' => array(
-			array(
-				'key' => 'field_5744b0fd7993d',
-				'label' => 'Publication Name',
-				'name' => 'publication_name',
-				'type' => 'text',
-				'instructions' => 'The name of the publication that covered URI.',
-				'required' => 1,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_5744b11f7993e',
-				'label' => 'URL',
-				'name' => 'url',
-				'type' => 'text',
-				'instructions' => 'The URL of the coverage.',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_5744b17179940',
-				'label' => 'Date',
-				'name' => 'date',
-				'type' => 'date_picker',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'display_format' => 'F j, Y',
-				'first_day' => 0,
-				'return_format' => 'd/m/Y',
-				'save_format' => 'yymmdd',
-			),
-		),
-		'location' => array(
-			array(
 				array(
 					'param' => 'post_category',
 					'operator' => '==',
-					'value' => '366',
+					'value' => 'category:news',
 				),
 			),
 		),
 		'menu_order' => 0,
-		'position' => 'acf_after_title',
+		'position' => 'side',
 		'style' => 'seamless',
 		'label_placement' => 'top',
 		'instruction_placement' => 'label',
-		'hide_on_screen' => array(),
-		'active' => 1,
-		'description' => '',
+		'hide_on_screen' => '',
+		'active' => true,
+		'description' => 'Sticky Post Order',
 	)
 	);
+
+	// Media Mentions
+	acf_add_local_field_group(
+		array(
+			'key' => 'group_63b6f040cd6a0',
+			'title' => 'Media Mention',
+			'fields' => array(
+				array(
+					'key' => 'field_63b6f2bc8e712',
+					'label' => 'Media Outlet',
+					'name' => 'media_outlet',
+					'type' => 'text',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+				),
+				array(
+					'key' => 'field_63b6f2f38e713',
+					'label' => 'Publication Date',
+					'name' => 'publication_date',
+					'type' => 'date_picker',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'display_format' => 'F j, Y',
+					'return_format' => 'F j, Y',
+					'first_day' => 0,
+				),
+			),
+			'location' => array(
+				array(
+					array(
+						'param' => 'post_category',
+						'operator' => '==',
+						'value' => 'category:media-mention',
+					),
+				),
+			),
+			'menu_order' => 0,
+			'position' => 'acf_after_title',
+			'style' => 'default',
+			'label_placement' => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen' => '',
+			'active' => true,
+			'description' => '',
+		)
+		);
+
 
 endif;

@@ -20,6 +20,27 @@
 
 	$media_contacts = uri_modern_news_get_media_contacts( $post );
 
+// echo '<pre>', print_r( $media_contacts, TRUE), '</pre>';
+//
+// $name = 'Todd McLeish';
+//
+// function get_media_contact_id_by_name( $name ) {
+// $last = array_pop( explode( ' ', $name ) );
+//
+// $args = array(
+// 'meta_key' => 'lastname',
+// 'meta_value' => $last,
+// );
+// $mc_post = get_posts( $args );
+// $media_contact_id = $mc_post[0]->ID;
+//
+// if( empty( $media_contact_id ) ) {
+// $media_contact_id = 51;
+// }
+// return $media_contact_id;
+// echo '<pre>', print_r( $media_contact_id, TRUE), '</pre>';
+// }
+// echo '<pre>', print_r( get_media_contact_id_by_name( 'Todd McLeish' ), TRUE), '</pre>';
 	// get the deck; empty it if it's just a copy of the title.
 	$deck = uri_modern_news_get_field( 'deck', $post->ID );
 	if ( get_the_title() == $deck ) {
@@ -32,18 +53,33 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
 	<header class="entry-header">
+
+	<?php if ( is_single() && is_array( $media_contacts ) ) : ?>
+	<aside class="news-post-detail">
+		<?php if ( count( $media_contacts ) > 0 ) : ?>
+			<span class="contacts">Media Contact<?php print ( count( $media_contacts ) == 1 ) ? '' : 's'; ?>:</span>
+			<?php foreach ( $media_contacts as $c ) : ?>
+				<div class="contact">
+				<span class="media-name"><a href="mailto:<?php print $c['email']; ?>"><?php print $c['name']; ?></a></span>
+				<span class="media-phone"><?php print $c['telephone']; ?></span>
+				</div>
+			<?php endforeach; ?>
+		<?php endif; ?>
+		<?php uri_modern_news_posted_on(); ?>
+		<?php echo do_shortcode( '[cl-share]' ); ?>
+		
+	</aside>
+	<?php endif; ?>
+
+
 	<div class="fullwidth">
 
 	<?php
 
-	if ( ! is_single() ) { // it's an archive view, show the image first
-		get_template_part( 'template-parts/featured-image' );
-	}
-
-
-	if ( is_single() && ! uri_modern_get_field( 'pagetitle' ) ) {
-
-		the_title( '<h1 class="entry-title fullwidth">', '</h1>' );
+	if ( is_single() ) {
+		if ( ! uri_modern_get_field( 'pagetitle' ) ) {
+			the_title( '<h1 class="entry-title fullwidth">', '</h1>' );
+		}
 
 		if ( ! empty( $deck ) ) {
 			print '<p class="type-intro deck">' . $deck . '</p>';
@@ -64,19 +100,6 @@
 		get_template_part( 'template-parts/featured-image' );
 	}
 	?>
-
-	<?php if ( is_single() && has_category( 'news', $post ) ) : ?>
-	<aside class="cl-boxout right news-post-detail">
-		<?php if ( is_array( $media_contacts ) ) : ?>
-			<h1>Media Contact<?php print ( count( $media_contacts ) == 1 ) ? '' : 's'; ?>:</h1>
-			<?php foreach ( $media_contacts as $c ) : ?>
-				<span class="media-name"><a href="mailto:<?php print $c['email']; ?>"><?php print $c['name']; ?></a></span><br />
-				<?php print $c['telephone']; ?><br />
-			<?php endforeach; ?>
-		<?php endif; ?>
-		<?php uri_modern_news_posted_on(); ?>
-	</aside>
-	<?php endif; ?>
 
 	<div class="entry-content">
 		<?php

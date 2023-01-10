@@ -1,23 +1,85 @@
 .news-post-detail {
-	clear: right;
+	margin: 2rem 0;
 	font-size: 1rem;
+	.media-name, .media-phone {
+		margin-right: .5rem;
+	}
+	div {
+		display: inline;
+	}
 	
-	.post-date {
-		margin: 1em 0;
-		
-		.posted-on {
-			display: block;
-		}
-		.updated-on {
-			display: none;
+	.updated-on {
+		display: none;
+	}
+	
+	.posted-on {
+		font-size: 0;
+		time {
+			font-size: 1rem;
 		}
 	}
 
-	h1 {
+	.cl-share-wrapper {
+		padding-top: .5em;
+		position: relative;
+		z-index: 999;
+		.cl-share-label {
+			background-color: transparent;
+			padding-left: 0;
+		}
+		a {
+			position: relative;
+			z-index: 999;
+		}
+	}
+	
+}
+
+.entry-title {
+	line-height: 1.5;
+}
+
+.cl-tiles .listing-item .wp-post-image {
+	display: block;
+	margin-bottom: 1rem;
+}
+
+.listing-item {
+	a.title {
+		@extend %titles-shared;
+	}
+	.date {
+		@extend %dates-shared;
+	}
+	
+	.excerpt {
+		color: #555;
+		display: block;
 		font-size: 1rem;
-		margin-bottom: .5rem;
+		line-height: 1.5;
 	}
 }
+
+.excerpt-dash {
+	display: none;
+}
+
+
+.category article .posted-on {
+	@extend %dates-shared;
+}
+.category article .updated-on {
+	display: none;
+}
+.category .entry-title {
+	@extend %titles-shared;
+}
+
+.lead-story a.title {
+	font-size: 1.7rem  !important;
+}
+
+
 
 .end-of-article-call {
 	background-color: $lighterblue;
@@ -26,7 +88,6 @@
 	margin: 8rem 0 4rem;
 	opacity: 0;
 	padding: 0 2rem;
-	transform: rotate(10deg);
 	transition: all 500ms cubic-bezier(.3, .6, .6, 1);
 
 
