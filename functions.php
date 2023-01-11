@@ -63,9 +63,6 @@ function uri_modern_news_get_field( $field_name, $post_id, $single = false ) {
  */
 function uri_modern_news_output_filter( $output, $original_atts, $image, $title, $date, $excerpt, $inner_wrapper, $content, $class, $author, $category_display_text ) {
 
-	// The default output
-	$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $image . $title . $date . $author . $category_display_text . $excerpt . $content . '</' . $inner_wrapper . '>';
-
 	if ( $post ) {
 		$id = $post->ID;
 	} else {
@@ -96,29 +93,6 @@ function uri_modern_news_output_filter( $output, $original_atts, $image, $title,
 
 }
 add_filter( 'display_posts_shortcode_output', 'uri_modern_news_output_filter', 10, 11 );
-
-
-/**
- * Excerpt Filter
- */
-function uri_modern_news_get_excerpt( $excerpt, $post = null ) {
-
-	if ( $post ) {
-		$id = $post->ID;
-	} else {
-		$id = get_the_ID();
-	}
-
-	// Use the lead instead, if there is one
-	$lead = uri_modern_news_get_field( 'lead', $id, false );
-	if ( ! empty( $lead ) ) {
-		$excerpt = '<span class="excerpt">' . $lead . '</span>';
-	}
-
-	return $excerpt;
-
-}
-add_filter( 'get_the_excerpt', 'uri_modern_news_get_excerpt', 999 );
 
 
 /**
