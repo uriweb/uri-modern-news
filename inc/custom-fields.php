@@ -10,7 +10,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 acf_add_local_field_group(
 	array(
 		'key' => 'group_5c23a496d6004',
-		'title' => 'COPE Fields',
+		'title' => 'News Display Fields',
 		'fields' => array(
 			array(
 				'key' => 'field_5734b7fc07aed',
