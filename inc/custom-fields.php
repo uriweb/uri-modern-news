@@ -17,7 +17,7 @@ acf_add_local_field_group(
 				'label' => 'Subhead',
 				'name' => 'deck',
 				'type' => 'textarea',
-				'instructions' => 'A short summary (sentence) that explains what the article is about. Limit 250 characters.',
+				'instructions' => 'A short summary (sentence) that explains what the article is about. Appears under the title on the published page. Limit 250 characters.',
 				'required' => 1,
 				'conditional_logic' => 0,
 				'wrapper' => array(
