@@ -266,25 +266,6 @@ acf_add_local_field_group(
 				'prepend' => '',
 				'append' => '',
 			),
-			array(
-				'key' => 'field_60b7ba9a2db33',
-				'label' => 'Deck',
-				'name' => 'deck_legacy',
-				'type' => 'text',
-				'instructions' => 'Do not use.	This is to support the legacy deck field.',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
 		),
 		'location' => array(
 			array(
