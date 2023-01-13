@@ -15,7 +15,7 @@
 function uri_modern_news_limit_search( $query ) {
 	if ( $query->is_search && ! is_admin() ) {
 		$query->set( 'post_type', array( 'post', 'page' ) );
-		$query->set( 'cat', array( 2, 2320 ) );
+		$query->set( 'cat', array( 'archives' ) );
 	}
 	return $query;
 }
