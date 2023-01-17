@@ -36,7 +36,7 @@ acf_add_local_field_group(
 				'label' => 'Subhead',
 				'name' => 'deck',
 				'type' => 'textarea',
-				'instructions' => 'A short summary (sentence) that explains what the article is about. Appears under the title on the published page. Limit 250 characters.',
+				'instructions' => 'A short summary (sentence) that explains what the article is about. Appears under the title on the published page (max 250 characters)',
 				'required' => 1,
 				'conditional_logic' => 0,
 				'wrapper' => array(
@@ -55,7 +55,7 @@ acf_add_local_field_group(
 				'label' => 'Horizontal Image',
 				'name' => 'horizontal_image',
 				'type' => 'image',
-				'instructions' => 'A horizontal-cropped version of the featured image for use on the homepage and other publications. (Accepts images from 1200px to 2560px wide)',
+				'instructions' => 'A horizontal-cropped version of the featured image for use on the homepage and other publications (accepts images from 1200px to 2560px wide)',
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
@@ -79,7 +79,7 @@ acf_add_local_field_group(
 				'label' => 'Vertical Image',
 				'name' => 'vertical_image',
 				'type' => 'image',
-				'instructions' => 'A vertically-cropped version of the featured image for use on the homepage and other publications. (Accepts images from 1200px to 2560px high)',
+				'instructions' => 'A vertically-cropped version of the featured image for use on the homepage and other publications (accepts images from 1200px to 2560px high)',
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
@@ -103,7 +103,7 @@ acf_add_local_field_group(
 				'label' => 'Homepage display format',
 				'name' => 'homepage_format',
 				'type' => 'select',
-				'instructions' => 'Set a preferred format to use if this post is in the hero space',
+				'instructions' => 'Set a preferred format to use if this post is in the hero space (leave blank to default to homepage configuration)',
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
