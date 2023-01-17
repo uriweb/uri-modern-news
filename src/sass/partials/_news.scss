@@ -59,19 +59,12 @@
 
 }
 
-@media screen and (min-width:800px) {
-	.news-post-detail {
-		float: right;
-
-		.cl-share-wrapper {
-			float: none;
-		}
-
-	}
-}
-
 .entry-title {
 	line-height: 1.5;
+}
+
+.category-archives .deck {
+	max-width: 750px;
 }
 
 .cl-tiles .listing-item .wp-post-image {
@@ -114,8 +107,6 @@
 	font-size: 1.7rem  !important;
 }
 
-
-
 .end-of-article-call {
 	background-color: $lighterblue;
 	font-family: $type-sans;
@@ -153,4 +144,19 @@
 		transform: rotate(0);
 	}
 	
+}
+
+@media screen and (min-width:800px) {
+	.news-post-detail {
+		float: right;
+
+		.cl-share-wrapper {
+			float: none;
+		}
+
+	}
+
+	.entry-title {
+		max-width: 75%;
+	}
 }
