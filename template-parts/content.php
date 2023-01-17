@@ -57,18 +57,27 @@
 	<?php if ( is_single() && is_array( $media_contacts ) ) : ?>
 	<aside class="news-post-detail">
 		<?php if ( count( $media_contacts ) > 0 ) : ?>
-			<span class="contacts">Media Contact<?php print ( count( $media_contacts ) == 1 ) ? '' : 's'; ?>:</span>
-			<?php foreach ( $media_contacts as $c ) : ?>
-				<div class="contact">
-				<span class="media-name"><a href="mailto:<?php print $c['email']; ?>"><?php print $c['first'] . ' ' . $c['last']; ?></a></span>
-				<span class="media-phone"><?php print $c['telephone']; ?></span>
-				</div>
-			<?php endforeach; ?>
+			<div class="contacts">
+				<div class="contacts-label">Media Contact<?php print ( count( $media_contacts ) == 1 ) ? '' : 's'; ?>:</div>
+				<?php foreach ( $media_contacts as $c ) : ?>
+					<div class="contact">
+						<span class="media-name"><a href="mailto:<?php print $c['email']; ?>"><?php print $c['first'] . ' ' . $c['last']; ?></a></span>
+						<span class="media-phone"><?php print $c['telephone']; ?></span>
+					</div>
+				<?php endforeach; ?>
+			</div>
 		<?php endif; ?>
-		<?php uri_modern_news_posted_on(); ?>
-		<?php echo do_shortcode( '[cl-share]' ); ?>
-		
+		<?php
+		if ( function_exists( 'uri_cl_shortcode_share' ) ) {
+			echo do_shortcode( '[cl-share style="light"]' );
+		}
+		?>
 	</aside>
+
+	<div class="news-post-date">
+		<?php uri_modern_news_posted_on(); ?>
+	</div>
+
 	<?php endif; ?>
 
 
