@@ -95,6 +95,20 @@ function uri_modern_news_output_filter( $output, $original_atts, $image, $title,
 	// but we're just going to hard-code it here for now
 	if ( ! empty( $original_atts['news_component'] ) ) {
 
+		if ( 'default' == $original_atts['news_component'] ) {
+
+			$homepage_format = uri_modern_news_get_field( 'homepage_format', $id, false );
+
+			// Set a default
+			if ( ! empty( $original_atts['default_component'] ) ) {
+				$original_atts['news_component'] = $original_atts['default_component'];
+			}
+
+			if ( ! empty( $homepage_format ) ) {
+				$original_atts['news_component'] = $homepage_format;
+			}
+		}
+
 		if ( 'card' == $original_atts['news_component'] ) {
 
 			$alternate_image = uri_modern_news_get_field( 'horizontal_image', $id, false );
@@ -148,7 +162,7 @@ function uri_modern_news_output_filter( $output, $original_atts, $image, $title,
 			}
 
 			if ( function_exists( 'uri_cl_shortcode_hero' ) ) {
-				$sc = '[cl-hero headline="' . uri_modern_news_escape_brackets( get_the_title() ) . '" subhead="' . uri_modern_news_escape_brackets( get_the_excerpt() ) . '" link="' . get_the_permalink() . '" img="' . $img_src . '" button="Read More"]';
+				$sc = '[cl-hero format="super" headline="' . uri_modern_news_escape_brackets( get_the_title() ) . '" subhead="' . uri_modern_news_escape_brackets( get_the_excerpt() ) . '" link="' . get_the_permalink() . '" img="' . $img_src . '" button="Read More"]';
 				$output = do_shortcode( $sc );
 			}
 		}

@@ -79,6 +79,31 @@ acf_add_local_field_group(
 				'max_size' => '',
 				'mime_types' => '',
 			),
+			array(
+				'key' => 'field_63c6bfc5c378c',
+				'label' => 'Homepage display format',
+				'name' => 'homepage_format',
+				'type' => 'select',
+				'instructions' => 'Set a preferred format to use if this post is in the hero space',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'hero' => 'Hero (best for horizontal images)',
+					'panel' => 'Panel (best for vertical images)',
+				),
+				'default_value' => false,
+				'allow_null' => 1,
+				'multiple' => 0,
+				'ui' => 0,
+				'return_format' => 'value',
+				'ajax' => 0,
+				'placeholder' => '',
+			),
 		),
 		'location' => array(
 			array(
@@ -245,26 +270,6 @@ acf_add_local_field_group(
 				'elements' => array(
 					0 => 'post_type',
 				),
-			),
-			array(
-				'key' => 'field_601d6a9a4ef8b',
-				'label' => 'Sticky Order',
-				'name' => 'sticky_order',
-				'type' => 'number',
-				'instructions' => 'Specify the order of the top 4 news stories.	(lower numbers appear first)',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'min' => '',
-				'max' => '',
-				'step' => '',
-				'prepend' => '',
-				'append' => '',
 			),
 		),
 		'location' => array(
