@@ -1,11 +1,8 @@
 .media-mentions {
 
     & > div {
-        background: #fff;
-        border-radius: .2rem;
-        padding: 1.5rem 2rem;
-        margin-bottom: 1rem;
-        border: 1px solid #f1f1f1;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 2rem;
     }
 
     .date {
@@ -19,10 +16,22 @@
         color: #555;
         margin-bottom: .5rem;
     }
-    
-    .title {
-        border-top: 1px solid #eee;
-        padding-top: .8rem;
+
+    &.featured {
+
+        & > div {
+            background: #fff;
+            border-radius: .2rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            border: 1px solid #f1f1f1;
+        }
+
+        .title {
+            border-top: 1px solid #eee;
+            padding-top: .8rem;
+        }
+
     }
 
 }
