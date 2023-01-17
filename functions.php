@@ -89,11 +89,86 @@ function uri_modern_news_output_filter( $output, $original_atts, $image, $title,
 		$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $date . $outlet_markup . $title . $excerpt . '</' . $inner_wrapper . '>';
 	}
 
+	// COMPONENTS
+	// @todo: ideally, this should filter the featured image and
+	// use the component library display posts extension,
+	// but we're just going to hard-code it here for now
+	if ( ! empty( $original_atts['news_component'] ) ) {
+
+		if ( 'card' == $original_atts['news_component'] ) {
+
+			$alternate_image = uri_modern_news_get_field( 'horizontal_image', $id, false );
+			$img_src = get_the_post_thumbnail_url( null, $original_atts['image_size'] );
+
+			// If there's a horizontal image set, prefer that
+			if ( ! empty( $alternate_image ) ) {
+				$img_src = wp_get_attachment_image_src( $alternate_image, 'original' )[0];
+			}
+
+			if ( function_exists( 'uri_cl_shortcode_card' ) ) {
+				$sc = '[cl-card title="' . uri_modern_news_escape_brackets( get_the_title() ) . '" body="' . uri_modern_news_escape_brackets( get_the_excerpt() ) . '" link="' . get_the_permalink() . '" img="' . $img_src . '" button="Read More"]';
+				$output = do_shortcode( $sc );
+			}
+		}
+
+		if ( 'panel' == $original_atts['news_component'] ) {
+
+			$alternate_image = uri_modern_news_get_field( 'vertical_image', $id, false );
+			$img_src = get_the_post_thumbnail_url( null, $original_atts['image_size'] );
+
+			// If there's a vertical image set, prefer that
+			if ( ! empty( $alternate_image ) ) {
+				$img_src = wp_get_attachment_image_src( $alternate_image, 'original' )[0];
+			}
+
+			if ( function_exists( 'uri_cl_shortcode_panel' ) ) {
+				$sc = '[cl-panel format="super" title="' . uri_modern_news_escape_brackets( get_the_title() ) . '" img="' . $img_src . '"]';
+				$sc .= uri_modern_news_escape_brackets( get_the_excerpt() );
+
+				$panel_link = '<a href="' . get_the_permalink() . '">Read More</a>';
+				if ( function_exists( 'uri_cl_shortcode_button' ) ) {
+					$panel_link = '[cl-button link="' . get_the_permalink() . '" text="Read More"]';
+				}
+
+				$sc .= '<p>' . $panel_link . '</p>';
+				$sc .= '[/cl-panel]';
+
+				$output = do_shortcode( $sc );
+			}
+		}
+
+		if ( 'hero' == $original_atts['news_component'] ) {
+
+			$alternate_image = uri_modern_news_get_field( 'horizontal_image', $id, false );
+			$img_src = get_the_post_thumbnail_url( null, $original_atts['image_size'] );
+
+			// If there's a horizontal image set, prefer that
+			if ( ! empty( $alternate_image ) ) {
+				$img_src = wp_get_attachment_image_src( $alternate_image, 'original' )[0];
+			}
+
+			if ( function_exists( 'uri_cl_shortcode_hero' ) ) {
+				$sc = '[cl-hero headline="' . uri_modern_news_escape_brackets( get_the_title() ) . '" subhead="' . uri_modern_news_escape_brackets( get_the_excerpt() ) . '" link="' . get_the_permalink() . '" img="' . $img_src . '" button="Read More"]';
+				$output = do_shortcode( $sc );
+			}
+		}
+	}
+
 	return $output;
 
 }
 add_filter( 'display_posts_shortcode_output', 'uri_modern_news_output_filter', 10, 11 );
 
+
+/**
+ * Helper function to excape square brackets in text that would otherwise appear in shortcodes
+ *
+ * @param str $input is the input string.
+ * @return str
+ */
+function uri_modern_news_escape_brackets( $input ) {
+	return str_replace( array( '[', ']' ), array( '&#91;', '&#93;' ), $input );
+}
 
 /**
  * Display only sticky posts
