@@ -13,6 +13,25 @@ acf_add_local_field_group(
 		'title' => 'News Display Fields',
 		'fields' => array(
 			array(
+				'key' => 'field_5911c478a8175',
+				'label' => 'Alternate Headline',
+				'name' => 'short_headline',
+				'type' => 'text',
+				'instructions' => 'Generally used if the official headline is too long for homepage display (max 50 characters)',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => 50,
+			),
+			array(
 				'key' => 'field_5734b7fc07aed',
 				'label' => 'Subhead',
 				'name' => 'deck',

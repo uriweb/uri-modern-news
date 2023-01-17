@@ -119,8 +119,16 @@ function uri_modern_news_output_filter( $output, $original_atts, $image, $title,
 				$img_src = wp_get_attachment_image_src( $alternate_image, 'original' )[0];
 			}
 
+			$short_headline = uri_modern_news_get_field( 'short_headline', $id, false );
+			$post_headline = get_the_title();
+
+			// If there's an alternate headline, prefer that
+			if ( ! empty( $short_headline ) ) {
+				$post_headline = $short_headline;
+			}
+
 			if ( function_exists( 'uri_cl_shortcode_card' ) ) {
-				$sc = '[cl-card title="' . uri_modern_news_escape_brackets( get_the_title() ) . '" body="' . uri_modern_news_escape_brackets( get_the_excerpt() ) . '" link="' . get_the_permalink() . '" img="' . $img_src . '" button="Read More"]';
+				$sc = '[cl-card title="' . uri_modern_news_escape_brackets( $post_headline ) . '" body="' . uri_modern_news_escape_brackets( get_the_excerpt() ) . '" link="' . get_the_permalink() . '" img="' . $img_src . '" button="Read More"]';
 				$output = do_shortcode( $sc );
 			}
 		}
@@ -135,8 +143,16 @@ function uri_modern_news_output_filter( $output, $original_atts, $image, $title,
 				$img_src = wp_get_attachment_image_src( $alternate_image, 'original' )[0];
 			}
 
+			$short_headline = uri_modern_news_get_field( 'short_headline', $id, false );
+			$post_headline = get_the_title();
+
+			// If there's an alternate headline, prefer that
+			if ( ! empty( $short_headline ) ) {
+				$post_headline = $short_headline;
+			}
+
 			if ( function_exists( 'uri_cl_shortcode_panel' ) ) {
-				$sc = '[cl-panel format="super" title="' . uri_modern_news_escape_brackets( get_the_title() ) . '" img="' . $img_src . '"]';
+				$sc = '[cl-panel format="super" title="' . uri_modern_news_escape_brackets( $post_headline ) . '" img="' . $img_src . '"]';
 				$sc .= uri_modern_news_escape_brackets( get_the_excerpt() );
 
 				$panel_link = '<a href="' . get_the_permalink() . '">Read More</a>';
@@ -161,8 +177,16 @@ function uri_modern_news_output_filter( $output, $original_atts, $image, $title,
 				$img_src = wp_get_attachment_image_src( $alternate_image, 'original' )[0];
 			}
 
+			$short_headline = uri_modern_news_get_field( 'short_headline', $id, false );
+			$post_headline = get_the_title();
+
+			// If there's an alternate headline, prefer that
+			if ( ! empty( $short_headline ) ) {
+				$post_headline = $short_headline;
+			}
+
 			if ( function_exists( 'uri_cl_shortcode_hero' ) ) {
-				$sc = '[cl-hero format="super" headline="' . uri_modern_news_escape_brackets( get_the_title() ) . '" subhead="' . uri_modern_news_escape_brackets( get_the_excerpt() ) . '" link="' . get_the_permalink() . '" img="' . $img_src . '" button="Read More"]';
+				$sc = '[cl-hero format="super" headline="' . uri_modern_news_escape_brackets( $post_headline ) . '" subhead="' . uri_modern_news_escape_brackets( get_the_excerpt() ) . '" link="' . get_the_permalink() . '" img="' . $img_src . '" button="Read More"]';
 				$output = do_shortcode( $sc );
 			}
 		}
