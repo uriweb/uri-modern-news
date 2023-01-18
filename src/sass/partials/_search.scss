@@ -7,14 +7,44 @@ body.search-results article {
 	padding-bottom: 0;
 }
 
+body.search-results .page-header h1 {
+
+	margin-bottom: 4rem;
+
+	span {
+		font-size: inherit;
+	}
+
+}
+
 body.search-results article h2 {
-	max-width: 100%;
+	max-width: 750px;
 }
 
 body.search-results article.post .entry-summary {
 	border-left: 0;
 	font-size: 1rem;
 	padding-left: 0;
+}
+
+body.search-results {
+
+	.posted-on {
+		font-size: 0;
+		time {
+			font-size: .9rem;
+			font-weight: 700;
+			color: #222;
+			display: inline-block;
+			background: #eee;
+			padding: .4rem .5rem .2rem;
+		}
+	}
+
+	.updated-on {
+		display: none;
+	}
+	
 }
 
 .wp-block-search, main .search-form {

@@ -130,6 +130,9 @@ add_action( 'save_post', 'uri_modern_news_category_transient_flusher' );
 /**
  * Print the Media Contact
  */
+
+/*
+// I don't think this is used anymore - BF
 function uri_modern_news_media_contact( $post ) {
 	if ( empty( $post ) ) {
 		return false;
@@ -141,6 +144,7 @@ function uri_modern_news_media_contact( $post ) {
 		echo $field;
   }
 }
+*/
 
 
 /**
@@ -201,8 +205,8 @@ function uri_modern_news_get_media_contacts( $post ) {
 	if ( ! empty( $media_contact_ids ) ) {
 		foreach ( $media_contact_ids as $id ) {
 			$media_contacts[] = array(
-				'name' => get_the_title( $id ),
-				'telephone' => uri_modern_news_get_field( 'last_name', $id ),
+				'first' => uri_modern_news_get_field( 'firstname', $id ),
+				'last' => uri_modern_news_get_field( 'lastname', $id ),
 				'telephone' => uri_modern_news_get_field( 'telephone', $id ),
 				'email' => uri_modern_news_get_field( 'email', $id ),
 			);

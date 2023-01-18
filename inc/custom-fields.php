@@ -10,15 +10,15 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 acf_add_local_field_group(
 	array(
 		'key' => 'group_5c23a496d6004',
-		'title' => 'COPE Fields',
+		'title' => 'News Display Fields',
 		'fields' => array(
 			array(
 				'key' => 'field_5911c478a8175',
-				'label' => 'Short Headline',
+				'label' => 'Alternate Headline',
 				'name' => 'short_headline',
 				'type' => 'text',
-				'instructions' => 'A short version of the headline (5 words or less).	Written and optimized for the web.',
-				'required' => 1,
+				'instructions' => 'Generally used if the official headline is too long for homepage display (max 50 characters)',
+				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
 					'width' => '',
@@ -29,15 +29,14 @@ acf_add_local_field_group(
 				'placeholder' => '',
 				'prepend' => '',
 				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
+				'maxlength' => 50,
 			),
 			array(
 				'key' => 'field_5734b7fc07aed',
-				'label' => 'Deck',
+				'label' => 'Subhead',
 				'name' => 'deck',
 				'type' => 'textarea',
-				'instructions' => 'A short summary (sentence) that explains what the article is about. Limit 250 characters.',
+				'instructions' => 'A short summary (sentence) that explains what the article is about. Appears under the title on the published page (max 250 characters)',
 				'required' => 1,
 				'conditional_logic' => 0,
 				'wrapper' => array(
@@ -52,49 +51,11 @@ acf_add_local_field_group(
 				'new_lines' => '',
 			),
 			array(
-				'key' => 'field_5734b86f07aee',
-				'label' => 'Lead',
-				'name' => 'lead',
-				'type' => 'textarea',
-				'instructions' => 'The first paragraph of the story.',
-				'required' => 1,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'maxlength' => '',
-				'rows' => 3,
-				'new_lines' => '',
-			),
-			array(
-				'key' => 'field_5734b8bd07aef',
-				'label' => 'Nutshell',
-				'name' => 'nutshell',
-				'type' => 'textarea',
-				'instructions' => 'A brief description of the key points.	Who, what, when, where, why, and how. Can be bullet points.',
-				'required' => 1,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'maxlength' => '',
-				'rows' => '',
-				'new_lines' => '',
-			),
-			array(
-				'key' => 'field_5911c4f3143ac',
-				'label' => 'Square Image',
-				'name' => 'image_square',
+				'key' => 'field_63c0443f4d9be',
+				'label' => 'Horizontal Image',
+				'name' => 'horizontal_image',
 				'type' => 'image',
-				'instructions' => 'A square-cropped version of the featured image for use on the homepage, News from URI, and other publications.',
+				'instructions' => 'A horizontal-cropped version of the featured image for use on the homepage and other publications (accepts images from 1200px to 2560px wide)',
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
@@ -102,16 +63,65 @@ acf_add_local_field_group(
 					'class' => '',
 					'id' => '',
 				),
+				'return_format' => 'array',
 				'preview_size' => 'thumbnail',
 				'library' => 'all',
+				'min_width' => 1200,
+				'min_height' => '',
+				'min_size' => '',
+				'max_width' => 2560,
+				'max_height' => 2560,
+				'max_size' => '',
+				'mime_types' => 'jpg, jpeg',
+			),
+			array(
+				'key' => 'field_63c0447e4d9bf',
+				'label' => 'Vertical Image',
+				'name' => 'vertical_image',
+				'type' => 'image',
+				'instructions' => 'A vertically-cropped version of the featured image for use on the homepage and other publications (accepts images from 1200px to 2560px high)',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
 				'return_format' => 'array',
-				'min_width' => 0,
-				'min_height' => 0,
-				'min_size' => 0,
-				'max_width' => 0,
-				'max_height' => 0,
-				'max_size' => 0,
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
+				'min_width' => '',
+				'min_height' => 1200,
+				'min_size' => '',
+				'max_width' => 2560,
+				'max_height' => 2560,
+				'max_size' => '',
 				'mime_types' => '',
+			),
+			array(
+				'key' => 'field_63c6bfc5c378c',
+				'label' => 'Homepage display format',
+				'name' => 'homepage_format',
+				'type' => 'select',
+				'instructions' => 'Set a preferred format to use if this post is in the hero space (leave blank to default to homepage configuration)',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'hero' => 'Hero (best for horizontal images)',
+					'panel' => 'Panel (best for vertical images)',
+				),
+				'default_value' => false,
+				'allow_null' => 1,
+				'multiple' => 0,
+				'ui' => 0,
+				'return_format' => 'value',
+				'ajax' => 0,
+				'placeholder' => '',
 			),
 		),
 		'location' => array(
@@ -124,7 +134,7 @@ acf_add_local_field_group(
 				array(
 					'param' => 'post_category',
 					'operator' => '==',
-					'value' => '2',
+					'value' => 'category:archives',
 				),
 			),
 		),
@@ -148,7 +158,7 @@ acf_add_local_field_group(
 			array(
 				'key' => 'field_56f97eaba1a90',
 				'label' => 'First Name',
-				'name' => 'first_name',
+				'name' => 'firstname',
 				'type' => 'text',
 				'instructions' => '',
 				'required' => 0,
@@ -168,7 +178,7 @@ acf_add_local_field_group(
 			array(
 				'key' => 'field_56f97ed1a1a91',
 				'label' => 'Last Name',
-				'name' => 'last_name',
+				'name' => 'lastname',
 				'type' => 'text',
 				'instructions' => '',
 				'required' => 0,
@@ -231,7 +241,7 @@ acf_add_local_field_group(
 				array(
 					'param' => 'post_category',
 					'operator' => '==',
-					'value' => '3',
+					'value' => 'category:contacts',
 				),
 			),
 		),
@@ -269,7 +279,7 @@ acf_add_local_field_group(
 					0 => 'post',
 				),
 				'taxonomy' => array(
-					0 => 'category:3',
+					0 => 'category:contacts',
 				),
 				'filters' => array(
 					0 => 'search',
@@ -286,7 +296,14 @@ acf_add_local_field_group(
 				array(
 					'param' => 'post_category',
 					'operator' => '==',
-					'value' => '2',
+					'value' => 'category:advisories',
+				),
+			),
+			array(
+				array(
+					'param' => 'post_category',
+					'operator' => '==',
+					'value' => 'category:archives',
 				),
 			),
 		),
@@ -300,57 +317,6 @@ acf_add_local_field_group(
 		'description' => '',
 	)
 );
-
-acf_add_local_field_group(
-	array(
-		'key' => 'group_5e2eef5bd6d48',
-		'title' => 'Sticky Order',
-		'fields' => array(
-			array(
-				'key' => 'field_5e2eefa926a8e',
-				'label' => 'Order',
-				'name' => 'sticky_order',
-				'type' => 'range',
-				'instructions' => 'Specify the order of the top 4 news stories.	(lower numbers appear first)',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => 30,
-				'min' => '',
-				'max' => '',
-				'step' => '',
-				'prepend' => '',
-				'append' => '',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'post',
-				),
-				array(
-					'param' => 'post_category',
-					'operator' => '==',
-					'value' => 'category:news',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'side',
-		'style' => 'seamless',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => 'Sticky Post Order',
-	)
-	);
 
 	// Media Mentions
 	acf_add_local_field_group(

@@ -15,7 +15,7 @@
 function uri_modern_news_limit_search( $query ) {
 	if ( $query->is_search && ! is_admin() ) {
 		$query->set( 'post_type', array( 'post', 'page' ) );
-		$query->set( 'cat', array( 2, 2320 ) );
+		$query->set( 'cat', array( 'archives' ) );
 	}
 	return $query;
 }
@@ -57,97 +57,14 @@ function uri_modern_news_get_field( $field_name, $post_id, $single = false ) {
 
 
 /**
- * Display Posts Output Filter
- *
- * @see https://displayposts.com/docs/the-output-filter/
- */
-function uri_modern_news_output_filter( $output, $original_atts, $image, $title, $date, $excerpt, $inner_wrapper, $content, $class, $author, $category_display_text ) {
-
-	// The default output
-	$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $image . $title . $date . $author . $category_display_text . $excerpt . $content . '</' . $inner_wrapper . '>';
-
-	if ( $post ) {
-		$id = $post->ID;
-	} else {
-		$id = get_the_ID();
-	}
-
-	// Only show a few things for Media Mention posts
-	if ( has_category( 'media-mention' ) ) {
-
-		// If we have a publication date, use that instead of the post date
-		$pubdate = uri_modern_news_get_field( 'publication_date', $id, false );
-		if ( ! empty( $pubdate ) ) {
-			$pubdate = date_create( $pubdate );
-			$date = '<span class="date">' . date_format( $pubdate, 'F j, Y' ) . '</span>';
-		}
-
-		// Use the media outlet, if there is one
-		$outlet_markup = '';
-		$outlet = uri_modern_news_get_field( 'media_outlet', $id, false );
-		if ( ! empty( $outlet ) ) {
-			$outlet_markup = '<span class="outlet">' . $outlet . '</span>';
-		}
-
-		$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $date . $outlet_markup . $title . $excerpt . '</' . $inner_wrapper . '>';
-	}
-
-	return $output;
-
-}
-add_filter( 'display_posts_shortcode_output', 'uri_modern_news_output_filter', 10, 11 );
-
-
-/**
- * Excerpt Filter
- */
-function uri_modern_news_get_excerpt( $excerpt, $post = null ) {
-
-	if ( $post ) {
-		$id = $post->ID;
-	} else {
-		$id = get_the_ID();
-	}
-
-	// Use the lead instead, if there is one
-	$lead = uri_modern_news_get_field( 'lead', $id, false );
-	if ( ! empty( $lead ) ) {
-		$excerpt = '<span class="excerpt">' . $lead . '</span>';
-	}
-
-	return $excerpt;
-
-}
-add_filter( 'get_the_excerpt', 'uri_modern_news_get_excerpt', 999 );
-
-
-/**
- * Display only sticky posts
- *
- * @see https://displayposts.com/2019/01/09/display-or-hide-sticky-posts/
- */
-function uri_modern_news_dps_display_only_sticky_posts( $args, $atts ) {
-
-	$sticky_variations = array( 'sticky_posts', 'sticky-posts', 'sticky posts' );
-	if ( ! empty( $atts['id'] ) && in_array( $atts['id'], $sticky_variations ) ) {
-		$sticky_posts = get_option( 'sticky_posts' );
-		$args['post__in'] = $sticky_posts;
-	}
-
-	if ( ! empty( $atts['exclude'] ) && in_array( $atts['exclude'], $sticky_variations ) ) {
-		$sticky_posts = get_option( 'sticky_posts' );
-		$args['post__not_in'] = $sticky_posts;
-	}
-
-	return $args;
-}
-add_filter( 'display_posts_shortcode_args', 'uri_modern_news_dps_display_only_sticky_posts', 10, 2 );
-
-
-/**
  * Custom fields
  */
 require get_stylesheet_directory() . '/inc/custom-fields.php';
+
+/**
+ * Display posts extensions
+ */
+require get_stylesheet_directory() . '/inc/display-posts.php';
 
 /**
  * Handy one-liner display helpers for the template files
@@ -158,6 +75,3 @@ require get_stylesheet_directory() . '/inc/template-tags.php';
  * Style the Simple Lighbox plugin
  */
 require get_stylesheet_directory() . '/inc/simple-lightbox-theme.php';
-
-
-
