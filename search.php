@@ -17,7 +17,7 @@ get_header(); ?>
 
 		<header class="page-header">
 			<?php get_search_form(); ?>
-			<h1 class="page-title"><?php printf( esc_html__( 'News release results for %s', 'uri' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+			<h1 class="page-title"><?php printf( esc_html__( 'News release results for %s', 'uri' ), '<span>"' . get_search_query() . '"</span>' ); ?></h1>
 		</header><!-- .page-header -->
 
 		<?php
