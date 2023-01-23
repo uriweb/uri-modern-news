@@ -23,6 +23,30 @@ add_filter( 'pre_get_posts', 'uri_modern_news_limit_search' );
 
 
 /**
+ * Orders the media mention archive by 'publication_date' custom field
+ * instead of the post's publication date
+ */
+function uri_modern_news_order_media_mentions( $query ) {
+
+	// do not modify queries in the admin
+	if ( is_admin() ) {
+		return $query;
+	}
+
+	// only modify queries for 'media-mention' post category
+	if ( isset( $query->query_vars['category_name'] ) && 'media-mention' == $query->query_vars['category_name'] && $query->is_main_query() ) {
+
+		$query->set( 'orderby', 'meta_value' );
+		$query->set( 'meta_key', 'publication_date' );
+		$query->set( 'order', 'DEC' );
+	}
+	// return
+	return $query;
+}
+add_action( 'pre_get_posts', 'uri_modern_news_order_media_mentions' );
+
+
+/**
  * Enqueue scripts and styles.
  */
 function uri_modern_news_enqueues() {
