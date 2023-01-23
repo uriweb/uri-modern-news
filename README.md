@@ -2,7 +2,16 @@
 
 URI Modern News is a WordPress theme designed for the University of Rhode Island news site. It is a child theme of URI Modern.
 
-## What's new in v2.0
+## What's new in v2.1
+
+URI Modern News v2.1 is a minor release.
+
+- Adds a custom archive template for `category:media-mention` posts
+- Orders the `media-mention` archive page by the publication date custom post type
+
+For complete details, see the [commit history](https://github.com/uriweb/uri-modern-news/pull/27/commits) and the [issue tracker](https://github.com/uriweb/uri-modern-news/issues).
+
+## New in v2.0
 
 URI Modern News v2.0 is a major release focused on cleaning up custom fields and supporting the News Enterprise launch.
 
@@ -34,4 +43,4 @@ Contributors: Brandon Fuller, John Pennypacker
 Tags: themes  
 Requires at least: 4.0  
 Tested up to: 6.1  
-Stable tag: 2.0  
+Stable tag: 2.1  
