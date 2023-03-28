@@ -9,7 +9,7 @@
             "homepage": "https://github.com/uriweb"
         }
     ],
-    "homepage": "https://www.uri.edu",
+    "homepage": "https://www.uri.edu/news",
     "license": "GPL-3.0-only",
     "require": {
         "php": ">=7.4"
