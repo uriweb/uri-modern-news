@@ -19,22 +19,22 @@ function uri_modern_news_limit_search( $query ) {
 			array(
 				'taxonomy' => 'category',
 				'field' => 'slug',
-				'terms' => 'archives'
+				'terms' => 'archives',
 			),
 			array(
 				'taxonomy' => 'category',
 				'field' => 'slug',
-				'terms' => 'media-mention'
+				'terms' => 'media-mention',
 			),
 			array(
 				'taxonomy' => 'category',
 				'field' => 'slug',
-				'terms' => 'community-message'
-			)
-			);
-		
+				'terms' => 'community-message',
+			),
+		);
+
 		$query->set( 'tax_query', $tax_query );
-		
+
 	}
 	return $query;
 }
