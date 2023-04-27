@@ -21,7 +21,7 @@ get_header(); ?>
 				?>
 			</header><!-- .page-header -->
 
-			<div class="media-mentions">
+			<div class="archive-list media-mentions">
 
 
 				<?php
@@ -48,7 +48,7 @@ get_header(); ?>
 						$outlet_markup = '<span class="outlet">' . $outlet . '</span>';
 					}
 
-					$title = '<a class="title" href="' . get_the_permalink() . '">' . get_the_title() . '</a>';
+					$title = '<h2><a class="title" href="' . get_the_permalink() . '">' . get_the_title() . '</a></h2>';
 
 					$output = '<div class="listing-item">' . $date . $outlet_markup . $title . '</div>';
 

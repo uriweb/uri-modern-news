@@ -9,13 +9,32 @@
 
 
 /**
- * Returns only press releases in search results
- * i.e. no people, no advisories, no pages.
+ * Returns only news and media mention posts in search results
  */
 function uri_modern_news_limit_search( $query ) {
 	if ( $query->is_search && ! is_admin() ) {
-		$query->set( 'post_type', array( 'post', 'page' ) );
-		$query->set( 'cat', array( 'archives' ) );
+
+		$tax_query = array(
+			'relation' => 'OR',
+			array(
+				'taxonomy' => 'category',
+				'field' => 'slug',
+				'terms' => 'archives',
+			),
+			array(
+				'taxonomy' => 'category',
+				'field' => 'slug',
+				'terms' => 'media-mention',
+			),
+			array(
+				'taxonomy' => 'category',
+				'field' => 'slug',
+				'terms' => 'community-message',
+			),
+		);
+
+		$query->set( 'tax_query', $tax_query );
+
 	}
 	return $query;
 }

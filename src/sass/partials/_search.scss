@@ -27,22 +27,50 @@ body.search-results article.post .entry-summary {
 	padding-left: 0;
 }
 
-body.search-results {
+body.search-results article.post {
+
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
+
+	a.title {
+		@extend %titles-shared;
+	}
+
+	.entry-meta {
+		margin-bottom: 0 !important;
+	}
+
+	.post-date {
+		margin-bottom: .2rem;
+	}
 
 	.posted-on {
 		font-size: 0;
 		time {
 			font-size: .9rem;
-			font-weight: 700;
-			color: #222;
-			display: inline-block;
-			background: #eee;
-			padding: .4rem .5rem .2rem;
+			margin-bottom: .2rem;
 		}
 	}
 
 	.updated-on {
 		display: none;
+	}
+
+	.outlet {
+        @extend %outlets-shared;
+    }
+
+	.entry-summary {
+
+		font-size: 1rem;
+		color: #555;
+		padding-left: 1rem;
+		border-left: 2px solid #ddd;
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+
 	}
 	
 }
