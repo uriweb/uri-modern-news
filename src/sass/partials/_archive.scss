@@ -21,3 +21,16 @@ body.archive {
 	}
 	
 }
+
+.archive-list {
+
+	& > div {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 2rem;
+    }
+
+    .date {
+        margin-bottom: .2rem !important;
+    }
+	
+}

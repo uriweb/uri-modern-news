@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying Community Message archive pages
+ * The template for displaying Archives (i.e. news) archive pages
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -17,11 +17,11 @@ get_header(); ?>
 
 			<header class="page-header">
 				<?php
-					print '<h1 class="page-title">All updates</h1>';
+					print '<h1 class="page-title">All news</h1>';
 				?>
 			</header><!-- .page-header -->
 
-			<div class="archive-list community-messages">
+			<div class="archive-list news">
 
 
 				<?php
@@ -34,7 +34,7 @@ get_header(); ?>
 						$id = $post->ID;
 					}
 
-					$date = '<div class="date">' . get_the_date() . '</div>';
+					$date = '<span class="date">' . get_the_date() . '</span>';
 
 					$title = '<h2><a class="title" href="' . get_the_permalink() . '">' . get_the_title() . '</a></h2>';
 

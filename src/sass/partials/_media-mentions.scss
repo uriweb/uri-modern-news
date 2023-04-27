@@ -10,11 +10,7 @@
     }
     
     .outlet {
-        display: block;
-        font-weight: 700;
-        font-size: 1.1rem;
-        color: #555;
-        margin-bottom: .5rem;
+        @extend %outlets-shared;
     }
 
     &.featured {
@@ -30,6 +26,10 @@
         .title {
             border-top: 1px solid #eee;
             padding-top: .8rem;
+        }
+
+        .outlet {
+            background: #000;
         }
 
     }
